@@ -7,6 +7,8 @@ public class DateTimeValidator
 {
   public static bool IsValid(string date)
   {
+    if (date == null) throw new ArgumentNullException("Date can't be null");
+
     if (DateTime.TryParseExact(date, "yyyy-MM-dd HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime temp))
     {
       if (temp < new DateTime(2000, 1, 1))
